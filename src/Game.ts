@@ -1,29 +1,32 @@
 import {MAX_WORD_SIZE, MAX_ATTEMPTS} from "./env.js";
 import {UIChanger} from "./UIChanger.js";
 
+
 export class Game {
     #pickedWord: string
-    #actualWord: string
-    #turn: number
-    #actualPosition: number
+    #actualWord: string = "";
+    #turn: number = 1;
+    #actualPosition: number = 0;
     #validLetterCodes: string[]
     #userInterface: UIChanger
     constructor(pickedWord: string){
         this.#pickedWord = pickedWord;
+        /*
         this.#actualWord = "";
         this.#turn = 1;
         this.#actualPosition = 0;
+        */
         this.#validLetterCodes = ["KeyQ", "KeyW", "KeyE", "KeyR", "KeyT", "KeyY", "KeyU", "KeyI", "KeyO", "KeyP", "KeyA", "KeyS", "KeyD", "KeyF", "KeyG", "KeyH", "KeyJ", "KeyK", "KeyL", "KeyZ", "KeyX", "KeyC", "KeyV", "KeyB", "KeyN", "KeyM", "Semicolon"];
         this.#userInterface = new UIChanger();
     }
-
+/*
     get pickedWord(){
         return this.#pickedWord;
     }
     set pickedWord(word){
         this.#pickedWord = word;
     }
-
+*/
     get actualWord(){
         return this.#actualWord;
     }
@@ -87,10 +90,11 @@ export class Game {
     }
 
     checkWordIsRight():void{
-        if (this.#actualWord == this.#pickedWord){
-            location.assign("/winner");
-        }
+            if (this.#actualWord === this.#pickedWord) {
+                location.assign("/winner");
+            }
     }
+
 
     checkRightLetters = ():void=>{
         for(let i=0; i<MAX_WORD_SIZE; i++){
@@ -152,10 +156,11 @@ export class Game {
     }
 
     checkGameIsOver():void{
-        if (this.turn == MAX_ATTEMPTS){
-            location.assign("/loser");
+        if (this.turn === MAX_ATTEMPTS && this.#actualWord != this.#pickedWord) {
+                    location.assign("/loser");  
         }
     }
+    
 
     enterPressed():void{
         if (this.#actualWord.length == MAX_WORD_SIZE){

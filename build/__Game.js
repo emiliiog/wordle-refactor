@@ -15,9 +15,9 @@ import { UIChanger } from "./UIChanger.js";
 export class Game {
     constructor(pickedWord) {
         _Game_pickedWord.set(this, void 0);
-        _Game_actualWord.set(this, "");
-        _Game_turn.set(this, 1);
-        _Game_actualPosition.set(this, 0);
+        _Game_actualWord.set(this, void 0);
+        _Game_turn.set(this, void 0);
+        _Game_actualPosition.set(this, void 0);
         _Game_validLetterCodes.set(this, void 0);
         _Game_userInterface.set(this, void 0);
         this.checkRightLetters = () => {
@@ -77,22 +77,18 @@ export class Game {
             __classPrivateFieldSet(this, _Game_actualWord, "", "f");
         };
         __classPrivateFieldSet(this, _Game_pickedWord, pickedWord, "f");
-        /*
-        this.#actualWord = "";
-        this.#turn = 1;
-        this.#actualPosition = 0;
-        */
+        __classPrivateFieldSet(this, _Game_actualWord, "", "f");
+        __classPrivateFieldSet(this, _Game_turn, 1, "f");
+        __classPrivateFieldSet(this, _Game_actualPosition, 0, "f");
         __classPrivateFieldSet(this, _Game_validLetterCodes, ["KeyQ", "KeyW", "KeyE", "KeyR", "KeyT", "KeyY", "KeyU", "KeyI", "KeyO", "KeyP", "KeyA", "KeyS", "KeyD", "KeyF", "KeyG", "KeyH", "KeyJ", "KeyK", "KeyL", "KeyZ", "KeyX", "KeyC", "KeyV", "KeyB", "KeyN", "KeyM", "Semicolon"], "f");
         __classPrivateFieldSet(this, _Game_userInterface, new UIChanger(), "f");
     }
-    /*
-        get pickedWord(){
-            return this.#pickedWord;
-        }
-        set pickedWord(word){
-            this.#pickedWord = word;
-        }
-    */
+    get pickedWord() {
+        return __classPrivateFieldGet(this, _Game_pickedWord, "f");
+    }
+    set pickedWord(word) {
+        __classPrivateFieldSet(this, _Game_pickedWord, word, "f");
+    }
     get actualWord() {
         return __classPrivateFieldGet(this, _Game_actualWord, "f");
     }
@@ -147,12 +143,12 @@ export class Game {
         __classPrivateFieldSet(this, _Game_actualWord, __classPrivateFieldGet(this, _Game_actualWord, "f") + letter, "f");
     }
     checkWordIsRight() {
-        if (__classPrivateFieldGet(this, _Game_actualWord, "f") === __classPrivateFieldGet(this, _Game_pickedWord, "f")) {
+        if (__classPrivateFieldGet(this, _Game_actualWord, "f") == __classPrivateFieldGet(this, _Game_pickedWord, "f")) {
             location.assign("/winner");
         }
     }
     checkGameIsOver() {
-        if (this.turn === MAX_ATTEMPTS && __classPrivateFieldGet(this, _Game_actualWord, "f") != __classPrivateFieldGet(this, _Game_pickedWord, "f")) {
+        if (this.turn == MAX_ATTEMPTS) {
             location.assign("/loser");
         }
     }
