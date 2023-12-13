@@ -1,32 +1,31 @@
-import {MAX_WORD_SIZE, MAX_ATTEMPTS} from "./env.js";
+//import {MAX_WORD_SIZE, MAX_ATTEMPTS} from "./env.js";
+
 import {UIChanger} from "./UIChanger.js";
 
+const MAX_WORD_SIZE: number = parseInt(process.env.MAX_WORD_SIZE!, 10);
+const MAX_ATTEMPTS: number = parseInt(process.env.MAX_ATTEMPTS!, 10);
 
 export class Game {
     #pickedWord: string
-    #actualWord: string = "";
+    #actualWord: string = ""
     #turn: number = 1;
     #actualPosition: number = 0;
     #validLetterCodes: string[]
     #userInterface: UIChanger
     constructor(pickedWord: string){
         this.#pickedWord = pickedWord;
-        /*
         this.#actualWord = "";
         this.#turn = 1;
         this.#actualPosition = 0;
-        */
         this.#validLetterCodes = ["KeyQ", "KeyW", "KeyE", "KeyR", "KeyT", "KeyY", "KeyU", "KeyI", "KeyO", "KeyP", "KeyA", "KeyS", "KeyD", "KeyF", "KeyG", "KeyH", "KeyJ", "KeyK", "KeyL", "KeyZ", "KeyX", "KeyC", "KeyV", "KeyB", "KeyN", "KeyM", "Semicolon"];
         this.#userInterface = new UIChanger();
     }
-/*
     get pickedWord(){
         return this.#pickedWord;
     }
     set pickedWord(word){
         this.#pickedWord = word;
     }
-*/
     get actualWord(){
         return this.#actualWord;
     }

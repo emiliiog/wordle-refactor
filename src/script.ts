@@ -4,6 +4,7 @@ import {Game} from "./game.js";
 
 const wordsCollection: Word = new Word(["JUEGO", "TALAR", "BAILE", "ANDAR", "MONTE", "PLAYA", "PLATA", "ARBOL", "QUESO"]);
 const pickedWord: string = wordsCollection.getRandomWord();
+
 console.log(pickedWord);
 
 const game: Game = new Game(pickedWord);
