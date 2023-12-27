@@ -6,11 +6,17 @@ export class UIChanger {
         Array.from(document.getElementById(`row_${turn}`).children)[position].textContent = "";
     }
     changeBackgroundPosition(turn, position, state) {
-        let positionClass = "cell-grey";
-        if (state == "rightLetter")
-            positionClass = "cell-green";
-        if (state == "misplacedLetter")
-            positionClass = "cell-orange";
+        let positionClass = "";
+        switch (state) {
+            case "rightLetter":
+                positionClass = "cell-green";
+                break;
+            case "misplacedLetter":
+                positionClass = "cell-orange";
+                break;
+            default:
+                positionClass = "cell-grey";
+        }
         Array.from(document.getElementById(`row_${turn}`).children)[position].classList.add(positionClass);
     }
     changeBackgroundKey(code) {

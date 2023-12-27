@@ -1,13 +1,20 @@
 import express from 'express';
 import path from 'path';
+import * as dotenv from 'dotenv';
 import {fileURLToPath} from 'url';
+
 
 const app:express.Application = express();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+dotenv.config({path: path.join(__dirname, "..", ".env")});
+
 app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, "..", "public")));
+
+
 
 app.get("/", (req: express.Request, res: express.Response)=>{
     res.sendFile(path.join(__dirname,'..','public', 'index.html'));
